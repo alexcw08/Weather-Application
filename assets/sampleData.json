@@ -1,0 +1,52 @@
+{
+  "week": [
+    {
+      "day": "Monday",
+      "weather": {
+        "condition": "sunny",
+        "highTemperature": 28,
+        "lowTemperature": 15
+      }
+    },
+    {
+      "day": "Tuesday",
+      "weather": {
+        "condition": "rain",
+        "highTemperature": 22,
+        "lowTemperature": 12
+      }
+    },
+    {
+      "day": "Wednesday",
+      "weather": {
+        "condition": "fog",
+        "highTemperature": 20,
+        "lowTemperature": 10
+      }
+    },
+    {
+      "day": "Thursday",
+      "weather": {
+        "condition": "sunny",
+        "highTemperature": 25,
+        "lowTemperature": 14
+      }
+    },
+    {
+      "day": "Friday",
+      "weather": {
+        "condition": "rain",
+        "highTemperature": 21,
+        "lowTemperature": 13
+      }
+    },
+    {
+      "day": "Saturday",
+      "weather": {
+        "condition": "fog",
+        "highTemperature": 19,
+        "lowTemperature": 11
+      }
+    }
+  ]
+}
