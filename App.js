@@ -1,9 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
+// Import components
+import CurrentTemp from "./components/CurrentTemp";
 
 export default function App() {
   return (
     <View style={styles.container}>
+      <CurrentTemp />
       <StatusBar style="auto" />
     </View>
   );
