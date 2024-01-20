@@ -1,21 +1,25 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
+// import test data
+import hourly from "../assets/sampleData.json";
 // Import Components
 import HourItem from "./HourItem";
 export default function CurrentHourly() {
+  let weatherData = hourly.hourly;
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.header}>Today</Text>
       </View>
 
-      <View style={styles.hourlyContainer}>
-        <HourItem hour={"09 AM"} degrees={"19"} />
-        <HourItem hour={"10 AM"} degrees={"19"} />
-        <HourItem hour={"11 AM"} degrees={"19"} />
-        <HourItem hour={"12 PM"} degrees={"19"} />
-        <HourItem hour={"01 PM"} degrees={"19"} />
-        <HourItem hour={"02 PM"} degrees={"19"} />
-      </View>
+      <ScrollView horizontal={true} style={styles.hourlyContainer}>
+        {weatherData.map((hour, index) => (
+          <HourItem
+            hour={hour.hour}
+            condition={hour.condition}
+            degrees={hour.temperature}
+          />
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -35,5 +39,6 @@ const styles = StyleSheet.create({
   },
   hourlyContainer: {
     flexDirection: "row",
+    paddingBottom: 20,
   },
 });

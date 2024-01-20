@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import week from "../assets/sampleData.json";
 import WeekItem from "./WeekItem";
 export default function WeekContainer() {
-  weatherData = week.week;
+  let weatherData = week.week;
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -22,15 +22,16 @@ export default function WeekContainer() {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 12,
-    width: "90%",
+    // marginVertical: 12,
+    width: "100%",
     alignItems: "center",
   },
   headerContainer: {
     width: "100%",
   },
   header: {
+    fontSize: 18,
     marginBottom: 12,
-    fontSize: 16,
+    paddingLeft: 14,
   },
 });
