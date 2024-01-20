@@ -1,4 +1,71 @@
 {
+  "hourly": [
+    {
+      "hour": "09 AM",
+      "condition": "sunny",
+      "temperature": 25
+    },
+    {
+      "hour": "10 AM",
+      "condition": "sunny",
+      "temperature": 24
+    },
+    {
+      "hour": "11 AM",
+      "condition": "sunny",
+      "temperature": 23
+    },
+    {
+      "hour": "12 PM",
+      "condition": "sunny",
+      "temperature": 22
+    },
+    {
+      "hour": "01 PM",
+      "condition": "sunny",
+      "temperature": 21
+    },
+    {
+      "hour": "02 PM",
+      "condition": "sunny",
+      "temperature": 20
+    },
+    {
+      "hour": "03 PM",
+      "condition": "sunny",
+      "temperature": 19
+    },
+    {
+      "hour": "04 PM",
+      "condition": "sunny",
+      "temperature": 18
+    },
+    {
+      "hour": "05 PM",
+      "condition": "sunny",
+      "temperature": 17
+    },
+    {
+      "hour": "06 PM",
+      "condition": "sunny",
+      "temperature": 16
+    },
+    {
+      "hour": "07 PM",
+      "condition": "sunny",
+      "temperature": 15
+    },
+    {
+      "hour": "08 PM",
+      "condition": "sunny",
+      "temperature": 14
+    },
+    {
+      "hour": "09 PM",
+      "condition": "sunny",
+      "temperature": 10
+    }
+  ],
   "week": [
     {
       "day": "Monday",
