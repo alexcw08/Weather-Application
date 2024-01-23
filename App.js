@@ -4,12 +4,14 @@ import { StyleSheet, View } from "react-native";
 import CurrentTemp from "./components/CurrentTemp";
 import CurrentHourly from "./components/CurrentHourly";
 import WeekContainer from "./components/WeekContainer";
+import Navbar from "./components/Navbar";
 export default function App() {
   return (
     <View style={styles.container}>
       <CurrentTemp />
       <CurrentHourly />
       <WeekContainer />
+      <Navbar />
       <StatusBar style="auto" />
     </View>
   );

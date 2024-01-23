@@ -14,6 +14,7 @@ export default function CurrentHourly() {
       <ScrollView horizontal={true} style={styles.hourlyContainer}>
         {weatherData.map((hour, index) => (
           <HourItem
+            key={index}
             hour={hour.hour}
             condition={hour.condition}
             degrees={hour.temperature}
