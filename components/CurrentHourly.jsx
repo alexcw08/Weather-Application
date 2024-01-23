@@ -40,6 +40,6 @@ const styles = StyleSheet.create({
   },
   hourlyContainer: {
     flexDirection: "row",
-    paddingBottom: 20,
+    paddingVertical: 20,
   },
 });

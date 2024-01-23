@@ -20,12 +20,7 @@ export default function HourItem({ hour, condition, degrees }) {
   return (
     <View style={styles.container}>
       <Text style={styles.hour}>{hour}</Text>
-      <Feather
-        name={iconName}
-        size={24}
-        color="black"
-        style={{ marginBottom: 10 }}
-      />
+      <Feather name={iconName} size={24} />
       <Text style={styles.degrees}>{degrees}°</Text>
     </View>
   );
@@ -34,7 +29,8 @@ export default function HourItem({ hour, condition, degrees }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    paddingHorizontal: 10,
+    marginHorizontal: 6,
+    padding: 14,
   },
   hour: {
     marginBottom: 10,
