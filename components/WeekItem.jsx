@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "98%",
+    width: "90%",
     marginVertical: 4,
     fontSize: 18,
   },

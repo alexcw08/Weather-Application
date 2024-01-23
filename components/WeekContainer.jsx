@@ -10,6 +10,7 @@ export default function WeekContainer() {
       </View>
       {weatherData.map((day, index) => (
         <WeekItem
+          key={index}
           day={day.day}
           condition={day.weather.condition}
           high={day.weather.highTemperature}
