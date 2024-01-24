@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 
-export default function CurrentTemp() {
+export default function CurrentTemp({ location }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.cityName}>Boston</Text>
+      <Text style={styles.cityName}>
+        {location.city}, {location.state}
+      </Text>
       <Text style={styles.temperature}>24°</Text>
       <View style={styles.conditionContainer}>
         <Text style={styles.condition}>Snowing</Text>
