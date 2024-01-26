@@ -9,7 +9,7 @@ export default function Navbar() {
       </View>
       <View style={styles.itemContainer}>
         <Feather name="heart" size={24} color="black" />
-        <Text>Favorites</Text>
+        <Text>Saved</Text>
       </View>
       <View style={styles.itemContainer}>
         <Feather name="settings" size={24} color="black" />
