@@ -29,6 +29,7 @@ export default function SearchBar({ setZipCode }) {
       <View style={styles.inputBox}>
         <TextInput
           placeholder="Search by Zip Code"
+          placeholderTextColor="#3D4166"
           value={userInput}
           onChangeText={(text) => setUserInput(text)}
           onSubmitEditing={handleSearch}
@@ -50,15 +51,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    // backgroundColor: "yellow",
   },
   inputBox: {
-    width: "45%",
-    backgroundColor: "#DEE2E6",
+    width: "50%",
+    backgroundColor: "#BFC1D9",
     flexDirection: "row",
-    padding: 5,
+    padding: 12,
     borderRadius: 10,
-    borderWidth: 2,
+    borderWidth: 0,
     borderColor: "#E9ECEF",
     justifyContent: "space-between",
   },

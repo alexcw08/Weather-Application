@@ -1,5 +1,11 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, SafeAreaView, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  Alert,
+  ScrollView,
+} from "react-native";
 import { useState, useEffect } from "react";
 import { ZIP_KEY } from "@env";
 // Import components
@@ -59,10 +65,12 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SearchBar setZipCode={setZipCode} />
-      <CurrentTemp location={location} />
-      <CurrentHourly />
-      <WeekContainer />
+      <ScrollView style={{ marginBottom: 65 }}>
+        <SearchBar setZipCode={setZipCode} />
+        <CurrentTemp location={location} />
+        <CurrentHourly />
+        <WeekContainer />
+      </ScrollView>
       <Navbar />
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -72,5 +80,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#E6E6EF",
   },
 });

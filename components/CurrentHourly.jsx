@@ -35,11 +35,12 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 18,
-    marginBottom: 12,
+    marginBottom: 0,
     paddingLeft: 14,
   },
   hourlyContainer: {
     flexDirection: "row",
-    paddingVertical: 20,
+    paddingBottom: 4,
+    // backgroundColor: "yellow",
   },
 });

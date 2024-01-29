@@ -29,11 +29,13 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   conditionContainer: {
-    borderWidth: 1,
+    borderWidth: 0,
     borderRadius: 15,
+    backgroundColor: "#5B5F97",
   },
   condition: {
-    fontSize: 16,
-    padding: 7,
+    fontSize: 18,
+    padding: 12,
+    color: "#FFFFEB",
   },
 });

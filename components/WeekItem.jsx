@@ -22,16 +22,10 @@ export default function WeekItem({ day, condition, high, low }) {
     <View style={styles.container}>
       <Text style={styles.day}>{day}</Text>
       <View style={styles.tempsContainer}>
-        <Text style={styles.hTemp}>{high}°</Text>
-        <Text style={styles.lTemp}>{low}°</Text>
+        <Text style={styles.hTemp}>H {high}°</Text>
+        <Text style={styles.lTemp}>L {low}°</Text>
       </View>
-      <Feather
-        name={iconName}
-        size={24}
-        color="black"
-        style={{ marginBottom: 10 }}
-      />
-      {/* <Text style={styles.condition}>{condition}</Text> */}
+      <Feather name={iconName} size={32} color="#FFFFEB" style={{}} />
     </View>
   );
 }
@@ -40,15 +34,31 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     width: "90%",
     marginVertical: 4,
     fontSize: 18,
+    backgroundColor: "#5B5F97",
+    borderRadius: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 16,
   },
-  day: { width: "30%", fontSize: 16 },
+  day: {
+    width: "30%",
+    fontSize: 18,
+    color: "#FFFFEB",
+  },
   tempsContainer: {
     flexDirection: "row",
   },
-  condition: { width: 50, marginRight: 10 },
-  hTemp: { fontSize: 16 },
-  lTemp: { fontSize: 16 },
+
+  hTemp: {
+    fontSize: 18,
+    color: "#FFFFEB",
+    paddingRight: 12,
+  },
+  lTemp: {
+    fontSize: 18,
+    color: "#FFFFEB",
+  },
 });
