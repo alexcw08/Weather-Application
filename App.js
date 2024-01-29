@@ -20,39 +20,41 @@ export default function App() {
   });
   const geoURL = `https://api.geocod.io/v1.7/geocode?postal_code=${zipCode}&api_key=${ZIP_KEY}`;
 
-  const fetchZip = async () => {
+  const handleNewZip = async () => {
+    // check if zipCode is not null
     if (zipCode != null) {
-      try {
-        const res = await fetch(geoURL);
-        const data = await res.json();
-        // api responds with 200 OK even wehn no results for given zip
-        if (data.results.length == 0) {
-          Alert.alert("Error", `No results found for ZIP Code ${zipCode}`);
-        } else {
-          // console.log("returning:", data.results[0]);
-          return data.results[0];
-        }
-      } catch (error) {
-        Alert.alert("Fetch Error", `API Fetch Error: ${error}`);
-      }
+      // fetch coordinates for the zip code
+      const data = await fetchZip();
+      // update location state
+      setLocation({
+        city: data.address_components.city,
+        state: data.address_components.state,
+        lat: data.location.lat,
+        long: data.location.lng,
+        zipCode: zipCode,
+      });
+    }
+  };
 
-      //   } else {
-      //     const locationData = data.results[0];
-      //     setLocation({
-      //       city: locationData.address_components.city,
-      //       state: locationData.address_components.state,
-      //       lat: locationData.location.lat,
-      //       long: locationData.location.lng,
-      //       zipCode: zipCode,
-      //     });
-      //   }
-      // }
+  const fetchZip = async () => {
+    try {
+      const res = await fetch(geoURL);
+      const data = await res.json();
+      // api responds with 200 OK even when no results for given zip
+      if (data.results.length == 0) {
+        Alert.alert("Error", `No results found for ZIP Code ${zipCode}`);
+      } else {
+        // console.log("returning:", data.results[0]);
+        return data.results[0];
+      }
+    } catch (error) {
+      Alert.alert("Fetch Error", `API Fetch Error: ${error}`);
     }
   };
 
   // fetch Coordinates from zip code when zip code changes
   useEffect(() => {
-    fetchZip();
+    handleNewZip();
   }, [zipCode]);
 
   return (
