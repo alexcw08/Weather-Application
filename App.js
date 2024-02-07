@@ -31,14 +31,16 @@ export default function App() {
     if (zipCode != null) {
       // fetch coordinates for the zip code
       const data = await fetchZip();
-      // update location state
-      setLocation({
-        city: data.address_components.city,
-        state: data.address_components.state,
-        lat: data.location.lat,
-        long: data.location.lng,
-        zipCode: zipCode,
-      });
+      if (data != undefined) {
+        // update location state
+        setLocation({
+          city: data.address_components.city,
+          state: data.address_components.state,
+          lat: data.location.lat,
+          long: data.location.lng,
+          zipCode: zipCode,
+        });
+      }
     }
   };
 
