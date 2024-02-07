@@ -33,11 +33,22 @@ export default function SearchBar({ setZipCode }) {
           value={userInput}
           onChangeText={(text) => setUserInput(text)}
           onSubmitEditing={handleSearch}
-          style={{ width: "80%" }}
+          style={{ width: "80%", padding: 12 }}
           maxLength={5}
         />
-        <TouchableOpacity onPress={handleSearch}>
-          <FontAwesome5 name="search" size={18} color="black" />
+        <TouchableOpacity
+          onPress={handleSearch}
+          style={{
+            backgroundColor: "#5C6099",
+            height: "100%",
+            width: "20%",
+            // borderRadius: 10,
+            borderTopEndRadius: 10,
+            borderBottomEndRadius: 10,
+            padding: 12,
+          }}
+        >
+          <FontAwesome5 name="search" size={18} color="white" />
         </TouchableOpacity>
       </View>
     </View>
@@ -56,7 +67,7 @@ const styles = StyleSheet.create({
     width: "50%",
     backgroundColor: "#BFC1D9",
     flexDirection: "row",
-    padding: 12,
+    // padding: 12,
     borderRadius: 10,
     borderWidth: 0,
     borderColor: "#E9ECEF",
