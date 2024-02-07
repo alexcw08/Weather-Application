@@ -1,6 +1,6 @@
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 
-export default function CurrentTemp({ location, isLoading }) {
+export default function CurrentTemp({ location, isLoading, currentWeather }) {
   return (
     <View style={styles.container}>
       {isLoading ? (
@@ -10,7 +10,7 @@ export default function CurrentTemp({ location, isLoading }) {
           {location.city}, {location.state}
         </Text>
       )}
-      <Text style={styles.temperature}>24°</Text>
+      <Text style={styles.temperature}>{currentWeather.temp.toFixed(0)}°</Text>
       <View style={styles.conditionContainer}>
         <Text style={styles.condition}>Snowing</Text>
       </View>
