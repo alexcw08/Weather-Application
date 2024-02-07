@@ -8,11 +8,13 @@ import CurrentHourly from "./components/CurrentHourly";
 import WeekContainer from "./components/WeekContainer";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
+import Onboard from "./screens/Onboard";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [zipCode, setZipCode] = useState();
   const [currentWeather, setCurrentWeather] = useState({});
+  const [hourlyWeather, setHourlyWeather] = useState([]);
   const [location, setLocation] = useState({
     city: "Boston",
     state: "MA",
@@ -23,6 +25,7 @@ export default function App() {
   const geoURL = `https://api.geocod.io/v1.7/geocode?postal_code=${zipCode}&api_key=${ZIP_KEY}`;
   const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.long}&exclude=alerts,minutely&units=imperial&appid=${WEATHER_KEY}`;
 
+  console.log(currentWeather);
   const handleNewZip = async () => {
     // check if zipCode is not null
     if (zipCode != null) {
@@ -100,6 +103,7 @@ export default function App() {
       </ScrollView>
       <Navbar />
       <StatusBar style="auto" />
+      {/* <Onboard /> */}
     </SafeAreaView>
   );
 }
