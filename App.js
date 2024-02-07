@@ -1,11 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  Alert,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, SafeAreaView, Alert, ScrollView } from "react-native";
 import { useState, useEffect } from "react";
 import { ZIP_KEY } from "@env";
 // Import components
@@ -16,6 +10,7 @@ import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(false);
   const [zipCode, setZipCode] = useState();
   const [location, setLocation] = useState({
     city: "Boston",
@@ -30,6 +25,7 @@ export default function App() {
     // check if zipCode is not null
     if (zipCode != null) {
       // fetch coordinates for the zip code
+      setIsLoading(true);
       const data = await fetchZip();
       if (data != undefined) {
         // update location state
@@ -41,6 +37,7 @@ export default function App() {
           zipCode: zipCode,
         });
       }
+      setIsLoading(false);
     }
   };
 
@@ -69,7 +66,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <ScrollView style={{ marginBottom: 65 }}>
         <SearchBar setZipCode={setZipCode} />
-        <CurrentTemp location={location} />
+        <CurrentTemp location={location} isLoading={isLoading} />
         <CurrentHourly />
         <WeekContainer />
       </ScrollView>
