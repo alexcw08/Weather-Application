@@ -1,13 +1,13 @@
 import { View, Text, StyleSheet } from "react-native";
 import SearchBar from "../components/SearchBar";
-export default function Onboard() {
+export default function Onboard({ setZipCode }) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>
         Welcome 👋{"\n"}Enter a{" "}
         <Text style={styles.highlightedText}>Zip Code</Text> to begin
       </Text>
-      <SearchBar />
+      <SearchBar setZipCode={setZipCode} />
     </View>
   );
 }
