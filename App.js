@@ -1,9 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, SafeAreaView, Alert } from "react-native";
 import { useState, useEffect } from "react";
-import { ZIP_KEY, WEATHER_KEY } from "@env";
-
-import Navbar from "./components/Navbar";
+import { fetchZip, fetchWeather } from "./services/api";
 
 import Onboard from "./screens/Onboard";
 import Home from "./screens/Home";
@@ -20,63 +18,36 @@ export default function App() {
     long: "71.05",
     zipCode: "02108",
   });
-  const geoURL = `https://api.geocod.io/v1.7/geocode?postal_code=${zipCode}&api_key=${ZIP_KEY}`;
-  const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.long}&exclude=alerts,minutely&units=imperial&appid=${WEATHER_KEY}`;
 
-  console.log(currentWeather);
   const handleNewZip = async () => {
-    // check if zipCode is not null
-    if (zipCode != null) {
-      // fetch coordinates for the zip code
+    try {
       setIsLoading(true);
-      const zipData = await fetchZip();
-      // zip code was valid and we got results
-      if (zipData != undefined) {
-        setLocation({
-          city: zipData.address_components.city,
-          state: zipData.address_components.state,
-          lat: zipData.location.lat,
-          long: zipData.location.lng,
-          zipCode: zipCode,
-        });
-      }
-      setIsLoading(false);
+      // fetchzip throws error if no results are returned
+      const zipData = await fetchZip(zipCode);
+      setLocation({
+        city: zipData.address_components.city,
+        state: zipData.address_components.state,
+        lat: zipData.location.lat,
+        long: zipData.location.lng,
+        zipCode: zipCode,
+      });
+    } catch (error) {
+      Alert.alert("Error", `No results found for Zip Code ${zipCode}`);
     }
+    setIsLoading(false);
   };
 
   const handleNewLocation = async () => {
-    // call weather api - get back array of size 48, only need 13
-    let weatherResults = await fetchWeather();
-    weatherResults.slice(0, 13);
-    setCurrentWeather(weatherResults[0]);
-  };
-
-  const fetchZip = async () => {
     try {
-      const res = await fetch(geoURL);
-      const data = await res.json();
-      // api responds with 200 OK even when no results for given zip
-      if (data.results.length == 0) {
-        Alert.alert("Error", `No results found for ZIP Code ${zipCode}`);
-      } else {
-        // console.log("returning:", data.results[0]);
-        return data.results[0];
-      }
+      // call weather api - get back array of size 48, only need 13
+      let weatherResults = await fetchWeather(location);
+      weatherResults.slice(0, 13);
+      setCurrentWeather(weatherResults[0]);
     } catch (error) {
-      Alert.alert("Fetch Error", `Geocod API Error: ${error}`);
+      Alert.alert("Fetch Error", `Weather API Error`);
     }
   };
 
-  const fetchWeather = async () => {
-    try {
-      const api = await fetch(weatherURL);
-      const data = await api.json();
-      return data.hourly;
-      // console.log(JSON.stringify(data.hourly, null, 0));
-    } catch (error) {
-      Alert.alert("Fetch Error", `Weather API Error: ${error}`);
-    }
-  };
   // fetch Coordinates from zip code when zip code changes
   useEffect(() => {
     handleNewZip();
