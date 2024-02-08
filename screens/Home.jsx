@@ -5,6 +5,7 @@ import SearchBar from "../components/SearchBar";
 import CurrentTemp from "../components/CurrentTemp";
 import CurrentHourly from "../components/CurrentHourly";
 import WeekContainer from "../components/WeekContainer";
+import Navbar from "../components/Navbar";
 
 export default function Home({
   setZipCode,
@@ -22,6 +23,7 @@ export default function Home({
       />
       <CurrentHourly />
       <WeekContainer />
+      <Navbar />
     </ScrollView>
   );
 }

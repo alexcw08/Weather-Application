@@ -1,14 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, SafeAreaView, Alert, ScrollView } from "react-native";
+import { StyleSheet, SafeAreaView, Alert } from "react-native";
 import { useState, useEffect } from "react";
 import { ZIP_KEY, WEATHER_KEY } from "@env";
-// Import components
-import CurrentTemp from "./components/CurrentTemp";
-import CurrentHourly from "./components/CurrentHourly";
-import WeekContainer from "./components/WeekContainer";
+
 import Navbar from "./components/Navbar";
-import SearchBar from "./components/SearchBar";
+
 import Onboard from "./screens/Onboard";
+import Home from "./screens/Home";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -91,19 +89,17 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={{ marginBottom: 65 }}>
-        <SearchBar setZipCode={setZipCode} />
-        <CurrentTemp
+      {zipCode ? (
+        <Home
+          setZipCode={setZipCode}
           location={location}
           isLoading={isLoading}
           currentWeather={currentWeather}
         />
-        <CurrentHourly />
-        <WeekContainer />
-      </ScrollView>
-      <Navbar />
+      ) : (
+        <Onboard setZipCode={setZipCode} />
+      )}
       <StatusBar style="auto" />
-      {/* <Onboard /> */}
     </SafeAreaView>
   );
 }
