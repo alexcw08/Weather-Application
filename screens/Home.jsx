@@ -1,4 +1,4 @@
-import { ScrollView } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 
 // Import components
 import SearchBar from "../components/SearchBar";
@@ -14,16 +14,25 @@ export default function Home({
   currentWeather,
 }) {
   return (
-    <ScrollView style={{ marginBottom: 65 }}>
-      <SearchBar setZipCode={setZipCode} />
-      <CurrentTemp
-        location={location}
-        isLoading={isLoading}
-        currentWeather={currentWeather}
-      />
-      <CurrentHourly />
-      <WeekContainer />
+    <View style={styles.container}>
+      <ScrollView style={{ marginBottom: 65 }}>
+        <SearchBar setZipCode={setZipCode} />
+        <CurrentTemp
+          location={location}
+          isLoading={isLoading}
+          currentWeather={currentWeather}
+        />
+        <CurrentHourly />
+        <WeekContainer />
+      </ScrollView>
       <Navbar />
-    </ScrollView>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#E6E6EF",
+  },
+});

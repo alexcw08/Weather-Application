@@ -10,7 +10,7 @@ import Home from "./screens/Home";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
-  const [zipCode, setZipCode] = useState();
+  const [zipCode, setZipCode] = useState("01902");
   const [currentWeather, setCurrentWeather] = useState({});
   const [hourlyWeather, setHourlyWeather] = useState([]);
   const [location, setLocation] = useState({
