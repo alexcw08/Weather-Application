@@ -2,9 +2,13 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, SafeAreaView, Alert } from "react-native";
 import { useState, useEffect } from "react";
 import { fetchZip, fetchWeather } from "./services/api";
-
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Onboard from "./screens/Onboard";
 import Home from "./screens/Home";
+import Saved from "./screens/Saved";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
