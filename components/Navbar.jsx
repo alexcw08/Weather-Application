@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     paddingTop: 15,
-    paddingBottom: 30,
+    paddingBottom: 10,
     flexDirection: "row",
     justifyContent: "space-evenly",
     width: "100%",
