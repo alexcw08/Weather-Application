@@ -10,9 +10,9 @@ export default function CurrentTemp({ location, isLoading, currentWeather }) {
           {location.city}, {location.state}
         </Text>
       )}
-      <Text style={styles.temperature}>25°</Text>
+      <Text style={styles.temperature}>{Math.round(currentWeather.temp)}°</Text>
       <View style={styles.conditionContainer}>
-        <Text style={styles.condition}>Snow</Text>
+        <Text style={styles.condition}>{currentWeather.weather[0].main}</Text>
       </View>
     </View>
   );
