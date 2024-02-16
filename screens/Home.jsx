@@ -15,7 +15,7 @@ export default function Home({
 }) {
   return (
     <View style={styles.container}>
-      <ScrollView style={{ marginBottom: 65 }}>
+      <ScrollView>
         <SearchBar setZipCode={setZipCode} />
         <CurrentTemp
           location={location}
@@ -25,7 +25,6 @@ export default function Home({
         <CurrentHourly />
         <WeekContainer />
       </ScrollView>
-      <Navbar />
     </View>
   );
 }
