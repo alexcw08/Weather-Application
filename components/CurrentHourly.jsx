@@ -1,10 +1,7 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native";
-// import test data
-import hourly from "../assets/sampleData.json";
 // Import Components
 import HourItem from "./HourItem";
-export default function CurrentHourly() {
-  let weatherData = hourly.hourly;
+export default function CurrentHourly({ hourlyWeather }) {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -12,12 +9,12 @@ export default function CurrentHourly() {
       </View>
 
       <ScrollView horizontal={true} style={styles.hourlyContainer}>
-        {weatherData.map((hour, index) => (
+        {hourlyWeather.map((hour, index) => (
           <HourItem
             key={index}
-            hour={hour.hour}
-            condition={hour.condition}
-            degrees={hour.temperature}
+            stamp={hour.dt}
+            condition={hour.weather[0].main}
+            degrees={hour.temp}
           />
         ))}
       </ScrollView>
