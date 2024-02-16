@@ -42,7 +42,7 @@ export default function App() {
       let weatherResults = await fetchWeather(location);
       weatherResults.slice(0, 13);
       setCurrentWeather(weatherResults[0]);
-      console.log(currentWeather);
+      setHourlyWeather(weatherResults);
     } catch (error) {
       Alert.alert("Fetch Error", `Weather API Error`);
     }
@@ -66,6 +66,7 @@ export default function App() {
           location={location}
           isLoading={isLoading}
           currentWeather={currentWeather}
+          hourlyWeather={hourlyWeather}
         />
       ) : (
         <Onboard setZipCode={setZipCode} />
