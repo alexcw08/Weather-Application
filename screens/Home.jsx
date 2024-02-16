@@ -12,6 +12,7 @@ export default function Home({
   location,
   isLoading,
   currentWeather,
+  hourlyWeather,
 }) {
   return (
     <View style={styles.container}>
@@ -22,7 +23,7 @@ export default function Home({
           isLoading={isLoading}
           currentWeather={currentWeather}
         />
-        <CurrentHourly />
+        <CurrentHourly hourlyWeather={hourlyWeather} />
         <WeekContainer />
       </ScrollView>
     </View>
