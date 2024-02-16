@@ -1,27 +1,17 @@
 import { View, Text, StyleSheet } from "react-native";
+import { formatTime } from "../utils/dateUtils";
+import { getIconName } from "../utils/conditionUtils";
 import { Feather } from "@expo/vector-icons";
-export default function HourItem({ hour, condition, degrees }) {
-  let iconName;
+export default function HourItem({ stamp, condition, degrees }) {
+  // console.log(stamp, condition, degrees);
+  const hour = formatTime(stamp);
+  const iconName = getIconName(condition);
 
-  switch (condition) {
-    case "sunny":
-      iconName = "sun";
-      break;
-    case "cloudy":
-      iconName = "cloud";
-      break;
-    case "rain":
-      iconName = "cloud-rain";
-      break;
-    case "fog":
-      iconName = "cloud";
-      break;
-  }
   return (
     <View style={styles.container}>
       <Text style={styles.hour}>{hour}</Text>
       <Feather name={iconName} size={24} color={"#FFFFEB"} />
-      <Text style={styles.degrees}>{degrees}°</Text>
+      <Text style={styles.degrees}>{Math.round(degrees)}°</Text>
     </View>
   );
 }
