@@ -7,16 +7,10 @@ import Home from "./screens/Home";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
-  const [zipCode, setZipCode] = useState("01902");
-  const [currentWeather, setCurrentWeather] = useState({});
-  const [hourlyWeather, setHourlyWeather] = useState([]);
-  const [location, setLocation] = useState({
-    city: "Boston",
-    state: "MA",
-    lat: "42.36",
-    long: "71.05",
-    zipCode: "02108",
-  });
+  const [zipCode, setZipCode] = useState();
+  const [currentWeather, setCurrentWeather] = useState();
+  const [hourlyWeather, setHourlyWeather] = useState();
+  const [location, setLocation] = useState();
 
   const handleNewZip = async () => {
     try {
@@ -54,13 +48,13 @@ export default function App() {
   }, [zipCode]);
 
   // fetch Weather when a new location is set
-  useEffect(() => {
-    handleNewLocation();
-  }, [location]);
+  // useEffect(() => {
+  //   handleNewLocation();
+  // }, [location]);
 
   return (
     <SafeAreaView style={styles.container}>
-      {zipCode ? (
+      {/* {zipCode ? (
         <Home
           setZipCode={setZipCode}
           location={location}
@@ -71,7 +65,9 @@ export default function App() {
       ) : (
         <Onboard setZipCode={setZipCode} />
       )}
+      {/* <StatusBar style="auto" /> */}
       <StatusBar style="auto" />
+      <Onboard setZipCode={setZipCode} />
     </SafeAreaView>
   );
 }
