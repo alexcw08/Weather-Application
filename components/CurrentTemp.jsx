@@ -3,17 +3,22 @@ import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 export default function CurrentTemp({ location, isLoading, currentWeather }) {
   return (
     <View style={styles.container}>
-      {isLoading ? (
-        <ActivityIndicator size="small" color="blue" />
-      ) : (
-        <Text style={styles.cityName}>
-          {location.city}, {location.state}
-        </Text>
+      {!location ? null : (
+        <>
+          <Text style={styles.cityName}>
+            {location.city}, {location.state}
+          </Text>
+
+          <Text style={styles.temperature}>
+            {Math.round(currentWeather.temp)}°
+          </Text>
+          <View style={styles.conditionContainer}>
+            <Text style={styles.condition}>
+              {currentWeather.weather[0].main}
+            </Text>
+          </View>
+        </>
       )}
-      <Text style={styles.temperature}>{Math.round(currentWeather.temp)}°</Text>
-      <View style={styles.conditionContainer}>
-        <Text style={styles.condition}>{currentWeather.weather[0].main}</Text>
-      </View>
     </View>
   );
 }

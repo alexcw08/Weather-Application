@@ -9,14 +9,15 @@ export default function CurrentHourly({ hourlyWeather }) {
       </View>
 
       <ScrollView horizontal={true} style={styles.hourlyContainer}>
-        {hourlyWeather.map((hour, index) => (
-          <HourItem
-            key={index}
-            stamp={hour.dt}
-            condition={hour.weather[0].main}
-            degrees={hour.temp}
-          />
-        ))}
+        {Array.isArray(hourlyWeather) &&
+          hourlyWeather.map((hour, index) => (
+            <HourItem
+              key={index}
+              stamp={hour.dt}
+              condition={hour.weather[0].main}
+              degrees={hour.temp}
+            />
+          ))}
       </ScrollView>
     </View>
   );
@@ -38,6 +39,5 @@ const styles = StyleSheet.create({
   hourlyContainer: {
     flexDirection: "row",
     paddingBottom: 4,
-    // backgroundColor: "yellow",
   },
 });

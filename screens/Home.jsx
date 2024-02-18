@@ -1,11 +1,10 @@
-import { View, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet, ActivityIndicator } from "react-native";
 
 // Import components
 import SearchBar from "../components/SearchBar";
 import CurrentTemp from "../components/CurrentTemp";
 import CurrentHourly from "../components/CurrentHourly";
 import WeekContainer from "../components/WeekContainer";
-import Navbar from "../components/Navbar";
 
 export default function Home({
   setZipCode,
@@ -16,16 +15,20 @@ export default function Home({
 }) {
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <SearchBar setZipCode={setZipCode} />
-        <CurrentTemp
-          location={location}
-          isLoading={isLoading}
-          currentWeather={currentWeather}
-        />
-        <CurrentHourly hourlyWeather={hourlyWeather} />
-        <WeekContainer />
-      </ScrollView>
+      {isLoading ? (
+        <ActivityIndicator size="large" color="blue" />
+      ) : (
+        <ScrollView>
+          <SearchBar setZipCode={setZipCode} />
+          <CurrentTemp
+            location={location}
+            isLoading={isLoading}
+            currentWeather={currentWeather}
+          />
+          <CurrentHourly hourlyWeather={hourlyWeather} />
+          <WeekContainer />
+        </ScrollView>
+      )}
     </View>
   );
 }
