@@ -27,34 +27,41 @@ export default function App() {
     } catch (error) {
       Alert.alert("Error", `No results found for Zip Code ${zipCode}`);
     }
-    setIsLoading(false);
   };
 
   const handleNewLocation = async () => {
     try {
       // call weather api - get back array of size 48, only need 13
       let weatherResults = await fetchWeather(location);
-      weatherResults.slice(0, 13);
+      // weatherResults.slice(0, 13);
       setCurrentWeather(weatherResults[0]);
-      setHourlyWeather(weatherResults);
+      // console.log("current weather: ", currentWeather);
+      setHourlyWeather(weatherResults.slice(0, 13));
+      // console.log(hourlyWeather);
     } catch (error) {
       Alert.alert("Fetch Error", `Weather API Error`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   // fetch Coordinates from zip code when zip code changes
   useEffect(() => {
-    handleNewZip();
+    if (zipCode) {
+      handleNewZip();
+    }
   }, [zipCode]);
 
   // fetch Weather when a new location is set
-  // useEffect(() => {
-  //   handleNewLocation();
-  // }, [location]);
+  useEffect(() => {
+    if (location) {
+      handleNewLocation();
+    }
+  }, [location]);
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* {zipCode ? (
+      {zipCode ? (
         <Home
           setZipCode={setZipCode}
           location={location}
@@ -65,9 +72,7 @@ export default function App() {
       ) : (
         <Onboard setZipCode={setZipCode} />
       )}
-      {/* <StatusBar style="auto" /> */}
       <StatusBar style="auto" />
-      <Onboard setZipCode={setZipCode} />
     </SafeAreaView>
   );
 }
