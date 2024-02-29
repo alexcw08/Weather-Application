@@ -26,6 +26,7 @@ export default function App() {
       });
     } catch (error) {
       Alert.alert("Error", `No results found for Zip Code ${zipCode}`);
+      setIsLoading(false);
     }
   };
 
