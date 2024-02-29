@@ -16,8 +16,13 @@ export default function Home({
   return (
     <View style={styles.container}>
       {isLoading ? (
-        <ActivityIndicator size="large" color="blue" />
-      ) : (
+        <ActivityIndicator
+          size="large"
+          color="blue"
+          style={{ position: "absolute", left: "50%", top: "50%" }}
+        />
+      ) : null}
+      <>
         <ScrollView>
           <SearchBar setZipCode={setZipCode} />
           <CurrentTemp
@@ -28,7 +33,7 @@ export default function Home({
           <CurrentHourly hourlyWeather={hourlyWeather} />
           <WeekContainer />
         </ScrollView>
-      )}
+      </>
     </View>
   );
 }
